@@ -1,0 +1,34 @@
+# Arquivos de Log e Temporários
+*.log
+*.tmp
+
+# Arquivos compilados do Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Pastas de ferramentas de build (Maven, Gradle)
+target/
+.gradle/
+build/
+
+# Arquivos do BlueJ
+*.ctxt
+
+# Arquivos do JCreator
+*.jcw
+*.jcu
+
+
+## IntelliJ IDEA ##
+.idea/
+*.iml
+*.iws
+
+## VS Code ##
+.vscode/
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
