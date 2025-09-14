@@ -7,11 +7,13 @@ public abstract class Conta{
     private String numConta;
     private double saldo;
     private ArrayList<Transacao> historico;
+    private static int contadorContas = 1;
 
-    public Conta(String nome, String numConta, double saldo){
+    public Conta(String nome, double saldo){
         this.nome = nome;
-        this.numConta = numConta;
         this.saldo = saldo;
+        this.numConta = String.valueOf(contadorContas);
+        contadorContas++;
         this.historico = new ArrayList<>();
     }
 
