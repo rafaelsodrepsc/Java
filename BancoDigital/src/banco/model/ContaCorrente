@@ -1,3 +1,23 @@
+package banco.model;
+
 public class ContaCorrente extends Conta{
+    private double chequeEspecial = 500.00;
+
+    public ContaCorrente(String nome,String numConta, double saldo, double chequeEspecial){
+        super(nome,numConta,saldo);
+        this.chequeEspecial = chequeEspecial;
+    }
+
+    @Override
+    public boolean sacar(double valor){
+        if(getSaldo() + chequeEspecial >= valor){
+            this.saldo -= valor;
+            Transacao novaTransacao = new Transacao(LocalDateTime.now(), TipoTransacao.SAQUE, valor, "Saque realizado.");
+            historico.add(novaTransacao);
+            return true; 
+        }else{
+            return false;
+        }
+    }
     
 }

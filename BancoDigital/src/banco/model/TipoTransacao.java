@@ -4,5 +4,6 @@ public enum TipoTransacao {
     PIX,
     TED,
     DEPOSITO,
-    SAQUE
+    SAQUE,
+    RENDIMENTO
 }

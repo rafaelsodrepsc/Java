@@ -1,21 +1,20 @@
 package banco.model;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public abstract class Conta{
-    private int id;
     private String nome;
     private String numConta;
     private double saldo;
     private ArrayList<Transacao> historico;
 
-
-    public int getId(){
-        return id;
+    public Conta(String nome, String numConta, double saldo){
+        this.nome = nome;
+        this.numConta = numConta;
+        this.saldo = saldo;
+        this.historico = new ArrayList<>();
     }
 
-    public void setId(int id){
-        this.id = id;
-    }
     public String getNome(){
         return nome;
     }
@@ -31,7 +30,6 @@ public abstract class Conta{
     public void setSaldo(double saldo){
         this.saldo = saldo;
     }
-
     
     public String getNumConta(){
         return numConta;
@@ -41,12 +39,26 @@ public abstract class Conta{
         this.numConta = numConta;
     }
 
-    public void sacar(double valor){
-        this.saldo -= valor;       
+    public void addTransacao(Transacao transacao){
+        this.historico.add(transacao);
     }
 
-    public void depositar(double valor){
-        this.saldo += valor;       
+    public boolean sacar(double valor){
+        if(getSaldo() >= valor){
+            this.saldo -= valor;
+            Transacao novaTransacao = new Transacao(LocalDateTime.now(), TipoTransacao.SAQUE, valor, "Saque realizado.");
+            historico.add(novaTransacao);
+            return true; 
+        }else{
+            return false;
+        }
+    }
+
+    public boolean depositar(double valor){
+        this.saldo += valor;
+        Transacao novaTransacao = new Transacao(LocalDateTime.now(), TipoTransacao.DEPOSITO, valor, "Deposito realizado.");
+        historico.add(novaTransacao);
+        return true;
     }
 
 }
