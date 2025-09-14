@@ -63,4 +63,8 @@ public abstract class Conta{
         return true;
     }
 
+    public ArrayList<Transacao> getHistorico(){
+        return this.historico;
+    }
+
 }
